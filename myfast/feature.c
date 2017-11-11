@@ -6,10 +6,12 @@
 //syn链接和ack链接
 //初始化链表 match
 
+//初始化节点
 int initflood(Node *pNode,srtruct syn_flood *flood){
 
   return 0;
 }
+
 
 //IPDST 未定义
 //unsigned char IPDST[16]="本端口ip";//初始化DOTO
