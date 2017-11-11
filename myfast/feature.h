@@ -6,5 +6,7 @@ struct syn_flood{
   unsigned char IPdst;
   unsigned char IPdst_synflag;
   unsigned char syn;
-  unsigned char
+  unsigned char ack;
+  unsigned char heibaiflag;
+  long firsttime;
 }
