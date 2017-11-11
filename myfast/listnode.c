@@ -238,14 +238,52 @@ int deleteLastList(Node **pNode)
 
     return 1;
 }
-//从单链表中删除值为x的第一个结点，若删除成功则返回1,否则返回0
+//-1表示错误；0表示相等；１表示不相等
+int ipv6_equal(char *addr1, char *addr2)
+{
+    int ret = -1;
+    int i = 0;
+    unsigned char n_addr1[16] = {-1};
+    unsigned char n_addr2[16] = {-1};
 
+    if (!addr1) {
+        printf("addr1 is NULL\n");
+        return -1;
+    }
 
-/* 12.向单链表中第pos个结点位置插入元素为x的结点，若插入成功返回１，否则返回０ */
-/* 13.向有序单链表中插入元素x结点，使得插入后仍然有序 */
-/* 14.从单链表中删除表头结点，并把该结点的值返回，若删除失败则停止程序运行 */
-/* 15.从单链表中删除表尾结点并返回它的值，若删除失败则停止程序运行 */
-/* 16.从单链表中删除第pos个结点并返回它的值，若删除失败则停止程序运行 */
-/* 17.从单链表中删除值为x的第一个结点，若删除成功则返回1,否则返回0 */
-/* 18.交换2个元素的位置 */
-/* 19.将线性表进行快速排序 */
+    if (!addr2) {
+        printf("addr2 is NULL\n");
+        return -1;
+    }
+
+    ret = inet_pton(AF_INET6, addr1, &(n_addr1));
+    if (ret <= 0 ) {
+        if (ret == 0) {
+            printf("addr1: Invalid IPv6 address\n");
+        }
+
+        return -1;
+    }
+    ret = inet_pton(AF_INET6, addr2, &(n_addr2));
+    if (ret <=0 ) {
+        if (ret == 0) {
+            printf("addr2: Invalid IPv6 address\n");
+        }
+
+        return -1;
+    }
+
+    for (i = 0; i < 16; i++) {
+        //printf("i: %d, addr1: %u, addr2: %u\n", i, n_addr1[i], n_addr2[i]);
+        if (n_addr1[i] != n_addr2[i]) {
+            return 1;
+        }
+    }
+    return 0;
+}
+//获取当前系统时间
+long getcurrenttieme(){
+	struct timeval tv;
+	gettimeofday(&tv,NULL);//tv.tv_sec秒   tv.tv_usec毫秒
+	return tv.tv_sec;
+}

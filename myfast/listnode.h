@@ -4,6 +4,10 @@
 #include "stdio.h"
 #include <stdlib.h>
 #include "string.h"
+#include <stdio.h>
+#include<unistd.h>
+#include<sys/time.h>
+#include <arpa/inet.h>
 typedef int elemType ;
 typedef struct Node{    /* 定义单链表结点类型 */
     elemType element;
@@ -23,8 +27,8 @@ int insertHeadList(Node **pNode,elemType insertElem);
 int insertLastList(Node **pNode,elemType insertElem);
 int deleteHeadList(Node **pNode);
 int deleteLastList(Node **pNode);
-
-
+int ipv6_equal(char *addr1, char *addr2);//-1表示错误；0表示相等；１表示不相等
+long getcurrenttieme()；//获取当前系统时间
 /************************************************************************/
 /*             以下是关于线性表链接存储（单链表）操作的18种算法        */
 
