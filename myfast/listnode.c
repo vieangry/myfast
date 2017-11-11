@@ -1,4 +1,4 @@
-#include "list.h"
+#include "listnode.h"
 /* 1.初始化线性表，即置单链表的表头指针为空 */
 void creatList(Node *pNode)
 {
