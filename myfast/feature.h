@@ -1,4 +1,12 @@
+#ifndef FEATURE_H_INCLUDED
+#define FEATURE_H_INCLUDED
 
+#include <stdio.h>
+#include <pthread.h>
+#include <string.h>
+#include <stdlib.h>
+#include <signal.h>
+#include <sys/time.h>
 struct syn_flood{
   unsigned char data[54];
   unsigned char IPsrc[16];
@@ -10,3 +18,5 @@ struct syn_flood{
   unsigned char heibaiflag;
   long firsttime;
 }
+
+#endif
