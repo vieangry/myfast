@@ -74,9 +74,9 @@ int initflood(Node *pNode,srtruct syn_flood *flood){
   return 0;
 }
 
-void* thread(Node *pNode)
+void* thread()
 {
-  Node *head=pNode;
+  Node *head=pNode;//全局变量pNode
   while(head->next!=NULL){
     if(head->heibaiflag==-1||head->heibaiflag==1){
       head=head->next;
@@ -92,7 +92,6 @@ void* thread(Node *pNode)
 
 void dispose_func()
 {
-  //dispose();
   pthread_t id;
   int temp,i;
   if((temp = pthread_create(&id, NULL, thread, NULL)) != 0){
@@ -124,7 +123,7 @@ void init_time()
   setitimer(ITIMER_REAL, &val, NULL);
 }
 //某个syn链接超时处理，即：一条链接过了很长时间都没有收到第三次握手
-int timeout(Node *pNode){
+int timeout(){
   //应该用多线程来做吧
   init_time();
   init_sigaction();
